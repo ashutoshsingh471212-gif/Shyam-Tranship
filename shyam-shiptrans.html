@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shyam Shiptrans Services India Pvt. Ltd.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c8a96e;
+    --gold-light: #e2c98a;
+    --gold-dim: #a07840;
+    --ink: #0b0e14;
+    --ink-mid: #13181f;
+    --ink-soft: #1c2330;
+    --cream: #f4ede0;
+    --cream-dim: #c9bfad;
+    --white: #ffffff;
+    --border: rgba(200,169,110,0.18);
+    --border-dim: rgba(200,169,110,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor { position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+  .cursor-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; transform: translate(-50%, -50%); transition: transform 0.1s; }
+  .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--gold); border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.18s ease; opacity: 0.6; }
+  body:hover .cursor-dot, body:hover .cursor-ring { opacity: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(11,14,20,0.98) 0%, rgba(11,14,20,0) 100%);
+    backdrop-filter: blur(0px);
+    transition: all 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(11,14,20,0.97);
+    backdrop-filter: blur(20px);
+    height: 68px;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .nav-logo { display: flex; flex-direction: column; gap: 1px; }
+  .nav-logo-main {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; letter-spacing: 4px; color: var(--gold);
+    text-transform: uppercase; font-weight: 500;
+  }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 3px; color: var(--cream-dim); text-transform: uppercase; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--cream-dim); text-decoration: none;
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,169,110,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(200,169,110,0.04) 0%, transparent 50%),
+      linear-gradient(160deg, #0b0e14 0%, #111622 50%, #0b0e14 100%);
+  }
+  /* India map silhouette SVG pattern */
+  .hero-map-overlay {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='1' fill='rgba(200%2C169%2C110%2C0.15)'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    opacity: 0.4;
+  }
+  /* Diagonal line decoration */
+  .hero-lines {
+    position: absolute; right: 0; top: 0; width: 55%; height: 100%;
+    overflow: hidden; pointer-events: none;
+  }
+  .hero-lines svg { width: 100%; height: 100%; opacity: 0.12; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; width: 100%; padding: 0 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .hero-left { }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5vw, 80px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--cream); margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-size: 13px; letter-spacing: 1.5px; line-height: 2;
+    color: var(--cream-dim); max-width: 400px; margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 16px 36px; border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    transition: all 0.35s; position: relative; overflow: hidden;
+  }
+  .hero-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold); transform: translateX(-101%); transition: transform 0.35s;
+  }
+  .hero-cta:hover::before { transform: translateX(0); }
+  .hero-cta:hover { color: var(--ink); }
+  .hero-cta span, .hero-cta svg { position: relative; z-index: 1; }
+
+  .hero-right {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 24px;
+  }
+  .hero-stat-block {
+    border: 1px solid var(--border); padding: 32px 40px;
+    background: rgba(200,169,110,0.03);
+    position: relative; overflow: hidden;
+    backdrop-filter: blur(4px);
+    animation: fadeSlideUp 0.8s ease both;
+  }
+  .hero-stat-block::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--gold);
+  }
+  .hero-stat-block:nth-child(2) { animation-delay: 0.15s; }
+  .hero-stat-block:nth-child(3) { animation-delay: 0.3s; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; color: var(--gold);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--cream-dim); }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dim);
+    animation: pulse 2s ease infinite;
+  }
+  .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold-dim), transparent); }
+
+  /* MARQUEE DIVIDER */
+  .marquee-section {
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+    padding: 18px 0; overflow: hidden;
+    background: rgba(200,169,110,0.03);
+  }
+  .marquee-track {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-item {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold-dim); padding: 0 40px;
+    display: flex; align-items: center; gap: 40px;
+  }
+  .marquee-item::after { content: '◆'; color: var(--gold); font-size: 7px; }
+
+  /* ABOUT */
+  .about {
+    padding: 140px 60px; max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+  }
+  .section-tag {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 3.5vw, 58px);
+    font-weight: 300; line-height: 1.1; color: var(--cream);
+    margin-bottom: 28px; letter-spacing: -0.5px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 14px; line-height: 2; color: var(--cream-dim);
+    margin-bottom: 20px;
+  }
+  .about-visual {
+    position: relative; height: 520px;
+  }
+  .about-card {
+    position: absolute;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(200,169,110,0.06) 0%, rgba(28,35,48,0.8) 100%);
+    backdrop-filter: blur(8px);
+  }
+  .about-card-main {
+    inset: 0 60px 60px 0;
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;
+    overflow: hidden;
+  }
+  .about-card-main::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(200,169,110,0.1) 0%, transparent 50%);
+  }
+  .about-card-accent {
+    bottom: 0; right: 0; width: 200px; height: 200px;
+    border-color: rgba(200,169,110,0.3);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(200,169,110,0.12), rgba(11,14,20,0.8));
+  }
+  .about-card-large-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; color: var(--gold); font-weight: 300;
+    line-height: 1; position: relative; z-index: 1;
+  }
+  .about-card-large-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--cream-dim); position: relative; z-index: 1; text-align: center;
+  }
+  .about-geo-tag {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); position: relative; z-index: 1;
+  }
+  .about-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; color: var(--cream); position: relative; z-index: 1;
+  }
+  /* Routes decoration inside card */
+  .route-lines { position: absolute; inset: 0; pointer-events: none; }
+
+  /* SERVICES */
+  .services {
+    padding: 120px 60px; background: var(--ink-mid);
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .services-inner { max-width: 1300px; margin: 0 auto; }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .services-header-left { max-width: 560px; }
+
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .service-card {
+    position: relative; padding: 64px 56px;
+    border: 1px solid var(--border-dim);
+    background: var(--ink);
+    overflow: hidden; cursor: none;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .service-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,169,110,0.05) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.5s;
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-card-gold-line {
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--gold);
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .service-card:hover .service-card-gold-line { width: 100%; }
+  .service-icon {
+    width: 56px; height: 56px; margin-bottom: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); position: relative;
+  }
+  .service-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .service-num {
+    position: absolute; top: -12px; right: -12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold-dim); letter-spacing: 1px;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 400; color: var(--cream);
+    margin-bottom: 16px; line-height: 1.1;
+  }
+  .service-desc {
+    font-size: 13px; line-height: 2; color: var(--cream-dim);
+    margin-bottom: 32px;
+  }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .service-features li {
+    font-size: 12px; letter-spacing: 1px; color: var(--cream-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .service-features li::before {
+    content: ''; width: 16px; height: 1px; background: var(--gold); flex-shrink: 0;
+  }
+  .service-arrow {
+    position: absolute; bottom: 40px; right: 40px;
+    width: 40px; height: 40px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; opacity: 0;
+  }
+  .service-card:hover .service-arrow { opacity: 1; border-color: var(--gold); }
+  .service-arrow svg { width: 16px; height: 16px; stroke: var(--gold); }
+
+  /* Full-width service highlight */
+  .service-card.full {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .service-card.full .service-right {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .service-mini {
+    padding: 24px; border: 1px solid var(--border-dim);
+    transition: border-color 0.3s;
+  }
+  .service-mini:hover { border-color: rgba(200,169,110,0.4); }
+  .service-mini-title { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .service-mini-desc { font-size: 12px; line-height: 1.8; color: var(--cream-dim); }
+
+  /* WHY US */
+  .why {
+    padding: 140px 60px; max-width: 1300px; margin: 0 auto;
+  }
+  .why-header { text-align: center; margin-bottom: 80px; }
+  .why-header .section-title { max-width: 600px; margin: 0 auto 20px; }
+  .why-header .section-title { font-size: clamp(36px, 3vw, 54px); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .why-item {
+    padding: 52px 40px;
+    border: 1px solid var(--border-dim);
+    position: relative; overflow: hidden;
+    background: var(--ink-mid);
+    transition: all 0.4s;
+  }
+  .why-item:hover { background: rgba(200,169,110,0.04); border-color: var(--border); }
+  .why-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px; font-weight: 300;
+    color: rgba(200,169,110,0.06);
+    position: absolute; top: -10px; right: 20px;
+    line-height: 1; pointer-events: none;
+    transition: color 0.4s;
+  }
+  .why-item:hover .why-item-num { color: rgba(200,169,110,0.1); }
+  .why-icon {
+    width: 44px; height: 44px; margin-bottom: 24px;
+    border-bottom: 1px solid var(--gold); padding-bottom: 16px;
+  }
+  .why-icon svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--cream); margin-bottom: 14px;
+  }
+  .why-desc { font-size: 13px; line-height: 2; color: var(--cream-dim); }
+
+  /* COVERAGE */
+  .coverage {
+    padding: 120px 60px;
+    background: linear-gradient(160deg, var(--ink-soft) 0%, var(--ink) 100%);
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+    position: relative; overflow: hidden;
+  }
+  .coverage::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(200,169,110,0.05) 0%, transparent 70%);
+  }
+  .coverage-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+  .coverage-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .coverage-map-visual {
+    position: relative; height: 460px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .india-outline {
+    width: 100%; height: 100%;
+  }
+  .coverage-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .zone-item {
+    padding: 20px 24px; border: 1px solid var(--border-dim);
+    transition: border-color 0.3s;
+  }
+  .zone-item:hover { border-color: var(--border); }
+  .zone-name {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 6px;
+  }
+  .zone-states { font-size: 12px; line-height: 1.7; color: var(--cream-dim); }
+
+  /* PROCESS */
+  .process { padding: 120px 60px; max-width: 1300px; margin: 0 auto; }
+  .process-header { margin-bottom: 80px; }
+  .process-steps { display: flex; gap: 0; position: relative; }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 32px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent 0%, var(--gold-dim) 10%, var(--gold-dim) 90%, transparent 100%);
+    opacity: 0.3;
+  }
+  .process-step {
+    flex: 1; padding: 0 32px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .step-num {
+    width: 64px; height: 64px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--gold);
+    background: var(--ink); position: relative; z-index: 1;
+    margin-bottom: 28px; transition: all 0.3s;
+  }
+  .process-step:hover .step-num { background: var(--gold); color: var(--ink); }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--cream); margin-bottom: 12px; }
+  .step-desc { font-size: 12px; line-height: 1.9; color: var(--cream-dim); }
+
+  /* FOOTER */
+  footer {
+    padding: 80px 60px 40px;
+    background: var(--ink);
+    border-top: 1px solid var(--border-dim);
+  }
+  .footer-inner { max-width: 1300px; margin: 0 auto; }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 60px; border-bottom: 1px solid var(--border-dim);
+    margin-bottom: 40px;
+  }
+  .footer-brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px; letter-spacing: 3px; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .footer-brand-sub { font-size: 10px; letter-spacing: 2px; color: var(--cream-dim); text-transform: uppercase; margin-bottom: 20px; }
+  .footer-tagline { font-size: 13px; line-height: 1.9; color: var(--cream-dim); }
+  .footer-col-title {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 13px; color: var(--cream-dim); text-decoration: none;
+    transition: color 0.3s; letter-spacing: 0.5px;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 11px; color: var(--cream-dim); letter-spacing: 1px; }
+  .footer-reg { font-size: 11px; color: rgba(200,169,110,0.4); letter-spacing: 1px; }
+  .footer-gold-line {
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin-bottom: 40px; opacity: 0.3;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Horizontal gold rule */
+  .gold-rule { width: 48px; height: 1px; background: var(--gold); margin: 24px 0; }
+
+  /* Inline gold divider */
+  .divider {
+    max-width: 1300px; margin: 0 auto;
+    padding: 0 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor cursor-dot" id="cursorDot"></div>
+<div class="cursor cursor-ring" id="cursorRing"></div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <span class="nav-logo-main">Shyam Shiptrans</span>
+    <span class="nav-logo-sub">Services India Pvt. Ltd.</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-map-overlay"></div>
+  <div class="hero-lines">
+    <svg viewBox="0 0 700 900" preserveAspectRatio="none">
+      <line x1="0" y1="200" x2="700" y2="100" stroke="rgba(200,169,110,0.8)" stroke-width="0.5"/>
+      <line x1="100" y1="400" x2="700" y2="250" stroke="rgba(200,169,110,0.6)" stroke-width="0.3"/>
+      <line x1="0" y1="600" x2="700" y2="450" stroke="rgba(200,169,110,0.5)" stroke-width="0.4"/>
+      <line x1="200" y1="800" x2="700" y2="650" stroke="rgba(200,169,110,0.4)" stroke-width="0.3"/>
+      <line x1="0" y1="900" x2="700" y2="800" stroke="rgba(200,169,110,0.3)" stroke-width="0.3"/>
+      <circle cx="400" cy="280" r="80" fill="none" stroke="rgba(200,169,110,0.15)" stroke-width="0.5"/>
+      <circle cx="500" cy="500" r="140" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="0.5"/>
+      <circle cx="350" cy="450" r="220" fill="none" stroke="rgba(200,169,110,0.05)" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">Established in India</div>
+      <h1 class="hero-title">
+        Moving India's<br>
+        Commerce <em>Forward</em>
+      </h1>
+      <p class="hero-subtitle">
+        Premier warehousing and transportation solutions connecting every corner of India. Reliability, precision, and excellence — delivered.
+      </p>
+      <a href="#services" class="hero-cta">
+        <span>Explore Services</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stat-block">
+        <div class="stat-num">Pan</div>
+        <div class="stat-label">India Coverage Network</div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="stat-num">28<sup style="font-size:24px">+</sup></div>
+        <div class="stat-label">States & Union Territories</div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Commitment to Excellence</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Warehousing Solutions</div>
+    <div class="marquee-item">Pan-India Transportation</div>
+    <div class="marquee-item">Last-Mile Delivery</div>
+    <div class="marquee-item">Cold Chain Logistics</div>
+    <div class="marquee-item">Bulk Freight</div>
+    <div class="marquee-item">Inventory Management</div>
+    <div class="marquee-item">Customs Handling</div>
+    <div class="marquee-item">Supply Chain Solutions</div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item">Warehousing Solutions</div>
+    <div class="marquee-item">Pan-India Transportation</div>
+    <div class="marquee-item">Last-Mile Delivery</div>
+    <div class="marquee-item">Cold Chain Logistics</div>
+    <div class="marquee-item">Bulk Freight</div>
+    <div class="marquee-item">Inventory Management</div>
+    <div class="marquee-item">Customs Handling</div>
+    <div class="marquee-item">Supply Chain Solutions</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-card about-card-main">
+      <!-- Route lines SVG -->
+      <svg class="route-lines" viewBox="0 0 400 400" fill="none">
+        <path d="M80 320 Q120 200 200 160 Q280 120 360 80" stroke="rgba(200,169,110,0.15)" stroke-width="1" stroke-dasharray="6 4"/>
+        <path d="M40 280 Q100 240 180 200 Q260 160 340 100" stroke="rgba(200,169,110,0.1)" stroke-width="0.5" stroke-dasharray="4 6"/>
+        <circle cx="200" cy="160" r="4" fill="rgba(200,169,110,0.5)"/>
+        <circle cx="80" cy="320" r="3" fill="rgba(200,169,110,0.3)"/>
+        <circle cx="360" cy="80" r="3" fill="rgba(200,169,110,0.3)"/>
+        <circle cx="140" cy="240" r="2" fill="rgba(200,169,110,0.2)"/>
+        <circle cx="300" cy="120" r="2" fill="rgba(200,169,110,0.2)"/>
+      </svg>
+      <span class="about-geo-tag">India's Logistics Partner</span>
+      <div class="about-card-title">Connecting Commerce,<br>Empowering Business</div>
+    </div>
+    <div class="about-card about-card-accent">
+      <div class="about-card-large-num">01</div>
+      <div class="about-card-large-label">Trusted Partner<br>Across India</div>
+    </div>
+  </div>
+
+  <div class="reveal reveal-delay-2">
+    <div class="section-tag">About The Company</div>
+    <h2 class="section-title">A Legacy of<br>Logistical <em>Excellence</em></h2>
+    <div class="gold-rule"></div>
+    <p class="section-body">
+      Shyam Shiptrans Services India Private Limited is a distinguished logistics enterprise committed to delivering world-class warehousing and transportation solutions across the length and breadth of India.
+    </p>
+    <p class="section-body">
+      We understand that behind every shipment is a business, a promise, and a livelihood. Our operations are built on the twin pillars of reliability and precision — ensuring your cargo reaches its destination intact, on time, every time.
+    </p>
+    <p class="section-body">
+      From the snow-capped highlands of the north to the coastal ports of the south, from the industrial corridors of the west to the agricultural heartlands of the east — we navigate India's diverse geography so you don't have to.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="services-header-left">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title">Integrated Logistics<br><em>Solutions</em></h2>
+      </div>
+      <p style="font-size:13px;line-height:2;color:var(--cream-dim);max-width:320px;text-align:right;">
+        Two core pillars of modern commerce — storage and movement — executed with meticulous precision.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Warehousing -->
+      <div class="service-card reveal">
+        <div class="service-card-gold-line"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          <span class="service-num">01</span>
+        </div>
+        <h3 class="service-name">Warehousing<br>Solutions</h3>
+        <p class="service-desc">
+          State-of-the-art storage facilities strategically located across India's major commercial and industrial hubs. Our warehouses are engineered for safety, efficiency, and accessibility — keeping your inventory secure and management seamless.
+        </p>
+        <ul class="service-features">
+          <li>Multi-tier racking & bulk storage systems</li>
+          <li>Temperature-controlled & dry storage options</li>
+          <li>24×7 security surveillance & access control</li>
+          <li>Real-time inventory management support</li>
+          <li>Flexible short-term and long-term leasing</li>
+          <li>Customs bonded warehouse capabilities</li>
+        </ul>
+        <div class="service-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+      </div>
+
+      <!-- Transportation -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-card-gold-line"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span class="service-num">02</span>
+        </div>
+        <h3 class="service-name">Transportation<br>Services</h3>
+        <p class="service-desc">
+          A robust, pan-India transportation network designed to move your goods with speed, safety, and precision. Whether it's full truckload, part-load, or express freight — our fleet and partners are always ready.
+        </p>
+        <ul class="service-features">
+          <li>Full Truckload (FTL) & Part Truckload (PTL)</li>
+          <li>Express & time-definite freight services</li>
+          <li>Over-dimensional cargo & project logistics</li>
+          <li>Container and trailer transport solutions</li>
+          <li>Door-to-door delivery across all Indian states</li>
+          <li>Dedicated fleet for high-value shipments</li>
+        </ul>
+        <div class="service-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+      </div>
+
+      <!-- Value-adds full row -->
+      <div class="service-card full reveal">
+        <div class="service-card-gold-line"></div>
+        <div class="service-left">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="service-num">03</span>
+          </div>
+          <h3 class="service-name">Integrated<br>Logistics Support</h3>
+          <p class="service-desc">
+            Beyond storage and transport, we offer a suite of value-added services that complete the supply chain — ensuring end-to-end continuity for your business operations.
+          </p>
+        </div>
+        <div class="service-right">
+          <div class="service-mini">
+            <div class="service-mini-title">Last-Mile Delivery</div>
+            <div class="service-mini-desc">Precision final-leg delivery to your customers, directly from our distribution points.</div>
+          </div>
+          <div class="service-mini">
+            <div class="service-mini-title">Supply Chain Mgmt</div>
+            <div class="service-mini-desc">End-to-end supply chain visibility and management tailored to your business needs.</div>
+          </div>
+          <div class="service-mini">
+            <div class="service-mini-title">Cargo Packaging</div>
+            <div class="service-mini-desc">Professional packing and labeling to protect your goods through the entire journey.</div>
+          </div>
+          <div class="service-mini">
+            <div class="service-mini-title">Load & Unload</div>
+            <div class="service-mini-desc">Skilled workforce for efficient loading, unloading, and material handling at every stage.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-header reveal">
+    <div class="section-tag" style="justify-content:center;">Why Choose Us</div>
+    <h2 class="section-title">Built on Trust,<br><em>Driven by Excellence</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-item-num">01</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
+      <h3 class="why-title">Proven Reliability</h3>
+      <p class="why-desc">Our commitment to on-time, damage-free deliveries is the foundation of every client relationship. We don't just move cargo — we honour promises.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-1">
+      <div class="why-item-num">02</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3 class="why-title">Cargo Safety First</h3>
+      <p class="why-desc">From sophisticated warehouse security to insured transit, every measure is taken to ensure your goods arrive exactly as they left — safe and intact.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-2">
+      <div class="why-item-num">03</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <h3 class="why-title">Pan-India Network</h3>
+      <p class="why-desc">Our established network of routes, warehouses, and transport partners blankets every state — giving you seamless reach across the entire subcontinent.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-3">
+      <div class="why-item-num">04</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3 class="why-title">Competitive Pricing</h3>
+      <p class="why-desc">Premium logistics need not mean prohibitive costs. Our lean operations and scale allow us to deliver excellence at rates that make sound business sense.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-4">
+      <div class="why-item-num">05</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3 class="why-title">Dedicated Support</h3>
+      <p class="why-desc">A responsive team of logistics professionals stands behind every shipment — coordinating, communicating, and resolving so your supply chain stays in motion.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-5">
+      <div class="why-item-num">06</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
+      <h3 class="why-title">Scalable Operations</h3>
+      <p class="why-desc">Whether you're a growing startup or an established enterprise, our operations flex to your volume — scaling up during peak demand without compromising quality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+  <div class="coverage-inner">
+    <div class="coverage-grid">
+      <div class="reveal">
+        <div class="section-tag">Our Reach</div>
+        <h2 class="section-title">Pan-India<br><em>Coverage</em></h2>
+        <div class="gold-rule"></div>
+        <p class="section-body">
+          Our operational network spans every major commercial corridor of India — from Jammu & Kashmir in the north to Kanyakumari in the south, from Gujarat in the west to Arunachal Pradesh in the east.
+        </p>
+        <p class="section-body">
+          With strategically positioned warehouses and a transportation network that covers all National Highways and key State Highways, we ensure no destination is beyond reach.
+        </p>
+        <div class="coverage-zones">
+          <div class="zone-item">
+            <div class="zone-name">North Zone</div>
+            <div class="zone-states">Delhi, UP, Haryana, Punjab, Rajasthan, HP, J&K</div>
+          </div>
+          <div class="zone-item">
+            <div class="zone-name">South Zone</div>
+            <div class="zone-states">Tamil Nadu, Karnataka, Kerala, Telangana, AP</div>
+          </div>
+          <div class="zone-item">
+            <div class="zone-name">West Zone</div>
+            <div class="zone-states">Maharashtra, Gujarat, Goa, MP, Chhattisgarh</div>
+          </div>
+          <div class="zone-item">
+            <div class="zone-name">East Zone</div>
+            <div class="zone-states">West Bengal, Odisha, Bihar, Jharkhand, NE States</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coverage-map-visual reveal reveal-delay-2">
+        <svg class="india-outline" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- India stylised map -->
+          <path d="M180 20 L200 15 L220 20 L250 30 L270 50 L280 80 L300 90 L310 110 L300 130 L310 150 L320 170 L315 190 L330 210 L340 240 L335 260 L320 280 L310 300 L290 320 L270 340 L250 360 L230 380 L210 400 L200 430 L195 450 L190 430 L180 400 L165 380 L150 360 L135 340 L120 320 L100 300 L85 280 L75 260 L70 240 L80 210 L90 190 L85 170 L90 150 L100 130 L90 110 L100 90 L120 80 L130 50 L150 30 Z"
+            fill="rgba(200,169,110,0.05)" stroke="rgba(200,169,110,0.4)" stroke-width="1.5"/>
+          <!-- Internal route lines -->
+          <line x1="200" y1="80" x2="200" y2="400" stroke="rgba(200,169,110,0.15)" stroke-width="0.8" stroke-dasharray="5 5"/>
+          <line x1="100" y1="220" x2="300" y2="220" stroke="rgba(200,169,110,0.15)" stroke-width="0.8" stroke-dasharray="5 5"/>
+          <line x1="130" y1="150" x2="280" y2="300" stroke="rgba(200,169,110,0.1)" stroke-width="0.5" stroke-dasharray="4 6"/>
+          <line x1="280" y1="150" x2="130" y2="300" stroke="rgba(200,169,110,0.1)" stroke-width="0.5" stroke-dasharray="4 6"/>
+          <!-- City dots -->
+          <circle cx="185" cy="80" r="4" fill="var(--gold)" opacity="0.8"/>
+          <circle cx="185" cy="80" r="8" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.4"/>
+          <text x="195" y="84" font-family="Jost" font-size="9" fill="rgba(200,169,110,0.7)" letter-spacing="1">Delhi</text>
+
+          <circle cx="270" cy="180" r="3" fill="var(--gold)" opacity="0.6"/>
+          <text x="277" y="184" font-family="Jost" font-size="8" fill="rgba(200,169,110,0.5)" letter-spacing="1">Kolkata</text>
+
+          <circle cx="155" cy="300" r="3" fill="var(--gold)" opacity="0.6"/>
+          <text x="115" y="304" font-family="Jost" font-size="8" fill="rgba(200,169,110,0.5)" letter-spacing="1">Mumbai</text>
+
+          <circle cx="205" cy="350" r="3" fill="var(--gold)" opacity="0.6"/>
+          <text x="212" y="354" font-family="Jost" font-size="8" fill="rgba(200,169,110,0.5)" letter-spacing="1">Chennai</text>
+
+          <circle cx="175" cy="260" r="3" fill="var(--gold)" opacity="0.6"/>
+          <text x="140" y="264" font-family="Jost" font-size="8" fill="rgba(200,169,110,0.5)" letter-spacing="1">Nagpur</text>
+
+          <circle cx="130" cy="160" r="3" fill="var(--gold)" opacity="0.5"/>
+          <text x="102" y="164" font-family="Jost" font-size="8" fill="rgba(200,169,110,0.4)" letter-spacing="1">Jaipur</text>
+
+          <!-- Animated pulse at center -->
+          <circle cx="200" cy="220" r="6" fill="rgba(200,169,110,0.3)">
+            <animate attributeName="r" values="6;14;6" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="200" cy="220" r="4" fill="var(--gold)" opacity="0.7"/>
+
+          <!-- Border label -->
+          <text x="200" y="490" font-family="Cinzel" font-size="10" fill="rgba(200,169,110,0.4)" text-anchor="middle" letter-spacing="3">INDIA</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header reveal">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Our <em>Process</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Requirement<br>Assessment</h3>
+      <p class="step-desc">We begin by understanding your specific logistics needs — cargo type, volume, origin, destination, and timeline requirements.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Custom<br>Solution Design</h3>
+      <p class="step-desc">Our logistics experts craft a tailored solution — selecting the optimal route, mode of transport, and warehousing configuration for your cargo.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Pickup &<br>Documentation</h3>
+      <p class="step-desc">Scheduled pickup from your facility. All cargo documentation, manifests, and compliance paperwork handled by our experienced team.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Transit &<br>Coordination</h3>
+      <p class="step-desc">Your cargo moves through our secure network with continuous coordination and tracking at every transit point across India.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="step-num">05</div>
+      <h3 class="step-title">Delivery &<br>Confirmation</h3>
+      <p class="step-desc">Precision delivery to the final destination with proof of delivery and complete handover documentation for your records.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-gold-line"></div>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Shyam Shiptrans</div>
+        <div class="footer-brand-sub">Services India Private Limited</div>
+        <p class="footer-tagline">
+          India's trusted logistics partner for warehousing and transportation — moving commerce forward with precision, reliability, and excellence across every state and territory.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Warehousing</a></li>
+          <li><a href="#services">Transportation</a></li>
+          <li><a href="#services">Last-Mile Delivery</a></li>
+          <li><a href="#services">Supply Chain</a></li>
+          <li><a href="#services">Cargo Packaging</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Coverage</div>
+        <ul class="footer-links">
+          <li><a href="#coverage">North India</a></li>
+          <li><a href="#coverage">South India</a></li>
+          <li><a href="#coverage">West India</a></li>
+          <li><a href="#coverage">East India</a></li>
+          <li><a href="#coverage">Northeast India</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Shyam Shiptrans Services India Private Limited. All rights reserved.</span>
+      <span class="footer-reg">CIN: U63090GJ2025PTC000000 &nbsp;|&nbsp; India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
